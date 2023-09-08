@@ -3,14 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>Text-based RPG</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        #game-container {
+            margin: 20px auto;
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <div id="game-container">
-        <p id="story-text">Welcome to the Text-based RPG!</p>
-        <button id="choice-1">Choice 1</button>
-        <button id="choice-2">Choice 2</button>
+        <h1>My RPG Adventure</h1>
+        <div id="game-text">
+            <p>Welcome to the world of adventure!</p>
+        </div>
+        <div id="choices">
+            <button id="choice-1">Explore the Forest</button>
+            <button id="choice-2">Visit the Town</button>
+        </div>
     </div>
-    <script src="game.js"></script>
-</body>
-</html>
+
+    <script>
+        let player = {
+            health: 100,
+            gold: 0,
+        };
+
+        function updateGame(text, choice1, choice2) {
+            document.getElementById("game-text").innerHTML = text;
+            document.getElementById("choice-1").textContent = choice1;
+            document.getElementById("choice-2").textContent = choice2;
+        }
+
+        document.getElementById("choice-1").addEventListener("click", function() {
+            updateGame("You ventured into the forest and found a hidden treasure!", "Continue exploring", "Visit the Town");
+            player.gold += 50;
